@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Spacers">
+  <title>Spacers</title>
+  <defs>
+    <style>
+      .mark { fill: #242D34; }
+      @media (prefers-color-scheme: dark) {
+        .mark { fill: #D0DAE1; }
+      }
+    </style>
+    <mask id="sygnet" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+      <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARCSURBVHhe7d2NbdswEIbhjNJRMko36SgZJaNkFBaH6pCUqSpS/Cjdie8DGEFjVJHhF6R+7ZcXoFMp5Ucp5c1+1s8Bp2xRvZc/PogLw6qoHHHhvJ2oHHGh30FUjrjQrjEqR1w41hmVIy7sOxmVe6+XB4xG9VEvDyAq6BEV5IgKckQFOaKCHFFBjqggR1SQIyrIERXkiApyRAU5ooIcUUGOqCBHVJAjKsgRFeSICnJEBTmighxRQY6oIEdUkCMqyBEV5IgKckQFOaKCHFFBjqggR1SQIyrIERXkloqqlPKz/h30VovKvoTH/Kqfg86qUTnimmD1qBxxCRHV34hLgKj+jbgGENX/EdcJRNWGuDosFZWxQOpX0YG4GiwXlSOueZaNyhGX3vJROeLSIaoKcY0jqh3EdR5RHSCufkTViLjaEVUn4jpGVCcR1z6iGkRc3xGVCHF9Iiox4iKqaVaOi6gmWzEuorrISnER1cVWiIuobvLkuIjqZk+Mi6iCGIzrrV7enUopr/UKdiAqtcG4PmyUqJd5tdHXUC8PIqNvzJ0fRjIw9Rmimm0wLmO3pb3Wy51FsL5EdRXFm7UFNm163NbR/s4IorqaIC7jgUmmyG1vTxGUIaq7iOJyFoNtB9kym6bKLSTby1OuhyGqu014U7+y2Dw4G9ns58hGeKumsDHR4MHGiIgqii0uxXbN3UKeKVjaFldm7/VrQhC2d1e/W1nUrwWBJJ4SJYc7MFHGUat+DQgo4ajFaJVFolGLA6GZJNpDZLTKJslB02knwTFJhumwXmckkGA6DHXJNDoEnw7Zvspq4EsMrsD2VVaTL6kZUq8rEiEsTDF4D99MHBjNLHBYXCKTGWFhisAHSQkrs8BhsY2VWeC9QsLKjAOkmCJ4WNzmlVXwK0m51SujwBvujj3DjIJPg4YN+IyCT4OO7axMElzk55gOM0kwDTobVRm1Mkg0WjkuUc4g+OXIexi1Igt8NcMRtrUiSzpaOUatiAKfcG4V4ksO8EXiKbDGQdMoHhSVYy/xbpMOLfhnv9vUag8752jx+sP+bQ97zj9JWY0T1HcRf1qyxdT8+e61bV0sNuWBWeK6mjAqi0m6wfwlMsW5SuK6iigq+//SoGrbeiq+/oS4ZhNEdfm5uS+BjSCuWQRR3bq3ta3/yOhFXGqCqEJ8ZJDgdRCXyuCbcfnUd0QwNRLXqNGo6uVFQlw3eXJUjrgutkJUjrguslJUjrgmWzEqR1yTrByVIy4xovpEXCJE9R1xDSKqfcR1ElEdI65ORNWOuBoRVT/iOkBU5xHXDqIaR1wVotIhrg1R6S0fF1HNs2xcRDXfknEN3LxJVB0G4wp12XaTbcTqvSuFqE44Gdetdy0N6YyLqAZ0xpU3KtcYF1EJNMaVPyp3EBdRCR3E9Zyo3E5cRDXBTlzPi8pVcRHVRFVcz43K+fGt+vfQ2+J6VFS/AWOblD+CFc5zAAAAAElFTkSuQmCC" width="32" height="32" preserveAspectRatio="xMidYMid meet"/>
+    </mask>
+  </defs>
+  <rect class="mark" width="32" height="32" mask="url(#sygnet)"/>
+</svg>
