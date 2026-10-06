@@ -1591,7 +1591,7 @@
 
       @media (min-width: 960px) {
         .footer-top {
-          grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.75fr);
+          grid-template-columns: minmax(0, 1fr) max-content;
           gap: clamp(3rem, 6vw, 6rem);
         }
       }
@@ -1659,8 +1659,9 @@
       @media (min-width: 960px) {
         .footer-aside {
           justify-self: end;
-          width: 100%;
-          max-width: 22rem;
+          width: max-content;
+          min-width: max-content;
+          max-width: none;
         }
       }
 
@@ -1671,9 +1672,18 @@
       }
 
       .footer-meta {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
         gap: 1.5rem 1.75rem;
+      }
+
+      .footer-meta-col--enquiry {
+        flex: 0 0 auto;
+      }
+
+      .footer-meta-col--enquiry a {
+        white-space: nowrap;
       }
 
       .footer-meta-label {
@@ -2366,7 +2376,7 @@
             </div>
 
             <div class="footer-meta">
-              <div>
+              <div class="footer-meta-col footer-meta-col--enquiry">
                 <span class="footer-meta-label">Business enquiry</span>
                 <ul class="footer-meta-list">
                   <li>
@@ -2374,7 +2384,7 @@
                   </li>
                 </ul>
               </div>
-              <div>
+              <div class="footer-meta-col">
                 <span class="footer-meta-label">Social</span>
                 <ul class="footer-meta-list footer-meta-list--social">
                   <li>
