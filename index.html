@@ -144,7 +144,8 @@
         overscroll-behavior: none;
       }
 
-      html.is-preloading .site-header {
+      html.is-preloading .site-header,
+      html.is-preloading .cookie-banner {
         visibility: hidden;
       }
 
@@ -227,7 +228,7 @@
       }
 
       p {
-        font-size: 18px;
+        font-size: 16px;
       }
 
       .hero-title {
@@ -843,208 +844,246 @@
         position: relative;
         z-index: 2;
         overflow: visible;
-        padding-top: var(--section-pad-y);
-        padding-bottom: var(--section-pad-y);
+        padding: 0;
+        color: var(--color-ink);
+        background: var(--color-mist);
       }
 
-      .build-layout {
-        --card-pad-y: 2.2rem;
-        --card-pad-x: 1.7rem;
-        --card-title-size: 24px;
-        --card-title-lh: 1.1;
-        --card-gap: 10px;
-        --card-stack-top: calc(10px + var(--header-height) + 0.65rem);
-        --card-fit: min(
-          34rem,
-          calc(100svh - var(--card-stack-top) - (2 * var(--card-gap)) - 5.5rem)
-        );
-        display: grid;
-        gap: 2.25rem;
-        align-items: start;
-      }
-
-      @media (min-width: 900px) {
-        .build-layout {
-          grid-template-columns: 1fr 1fr;
-          gap: 3rem;
-        }
-      }
-
-      .build-copy {
-        position: sticky;
-        top: var(--card-stack-top);
+      .services-list {
+        position: relative;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-        z-index: 0;
+        width: 100%;
       }
 
-      @media (min-width: 900px) {
-        .build-copy {
-          /* Same vertical band as the middle card (index 1). */
-          top: calc(var(--card-stack-top) + var(--card-gap));
-          min-height: var(--card-fit);
-          justify-content: flex-end;
-        }
-      }
-
-      .build-copy-heading {
-        margin: 0;
-        color: var(--color-ink);
-        font-size: clamp(2.05rem, 3.15vw, 3.45rem);
-      }
-
-      .build-copy .hero-sub {
-        margin: 0;
-        font-size: 18px;
-        line-height: 1.55;
+      .service-item {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        width: 100%;
+        min-height: fit-content;
+        background: var(--color-mist);
         color: var(--color-ink);
       }
 
-      .build-cards {
+      .service-row {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .service-visual {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 5rem 1.5rem 0;
+        box-sizing: border-box;
+        text-align: center;
+      }
+
+      .service-caption {
+        display: block;
+        margin: 0 0 45px;
+        font-family: "Zalando Sans Expanded", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        color: var(--color-steel);
+      }
+
+      .service-visual img {
         display: block;
         width: 100%;
-        padding-bottom: 50svh;
+        max-width: 660px;
+        height: auto;
+        border-radius: 7.5px;
+        object-fit: cover;
       }
 
-      @media (min-width: 640px) {
-        .build-layout {
-          --card-pad-y: 2.6rem;
-          --card-pad-x: 2.15rem;
+      .service-visual--navy {
+        background: var(--color-navy);
+      }
+
+      .service-visual--navy .service-caption {
+        color: var(--color-sand);
+      }
+
+      .service-visual--sand {
+        background: var(--color-sand);
+      }
+
+      .service-visual--sand .service-caption {
+        color: var(--color-ink);
+      }
+
+      .service-content {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        column-gap: 22.5px;
+        width: 100%;
+        padding: 4rem 1.5rem 5rem;
+        box-sizing: border-box;
+      }
+
+      .service-content-inner {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+      }
+
+      .service-title-block {
+        margin: 0 0 4rem;
+      }
+
+      .service-title {
+        margin: 0 0 22.5px;
+        font-size: 2.5rem;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        color: var(--color-ink);
+        overflow: visible;
+      }
+
+      .service-desc {
+        margin: 0;
+        max-width: 420px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.45;
+        color: var(--color-steel);
+      }
+
+      .service-info {
+        max-width: 420px;
+      }
+
+      .service-info-label {
+        display: block;
+        margin: 0 0 37.5px;
+        font-family: "Zalando Sans Expanded", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        color: var(--color-steel);
+        opacity: 0.6;
+      }
+
+      .service-info-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .service-info-list li {
+        margin: 0;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--color-ink);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--color-ink);
+      }
+
+      .service-info-list li:first-child {
+        padding-top: 0;
+      }
+
+      .service-info-list li:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      @media (min-width: 768px) {
+        .services-list {
+          height: 100svh;
+          min-height: 100svh;
+          overflow: hidden;
         }
-      }
 
-      @media (min-width: 900px) {
-        .build-layout {
-          --card-pad-y: 2.9rem;
-          --card-pad-x: 2.45rem;
-          --card-stack-top: calc(10px + var(--header-height) + 0.85rem);
+        .service-item {
+          position: absolute;
+          inset: 0;
+          min-height: 100svh;
+          height: 100svh;
+          will-change: transform;
+        }
+
+        .service-item:nth-child(1) { z-index: 1; }
+        .service-item:nth-child(2) { z-index: 2; }
+        .service-item:nth-child(3) { z-index: 3; }
+
+        .service-row {
+          flex-direction: row;
+          height: 100%;
+        }
+
+        .service-visual,
+        .service-content {
+          width: 50%;
+          padding: 5rem 2.5rem;
+        }
+
+        .service-visual {
+          border-right: 1px solid color-mix(in srgb, var(--color-ink) 15%, transparent);
+        }
+
+        .service-visual--navy {
+          border-right-color: color-mix(in srgb, var(--color-sand) 18%, transparent);
         }
       }
 
       @media (min-width: 1024px) {
-        .build-layout {
-          --card-pad-y: 3.15rem;
-          --card-pad-x: 2.65rem;
+        .service-visual {
+          padding: 140.625px 75px;
+        }
+
+        .service-content {
+          padding: 140.625px 0;
+        }
+
+        .service-content-inner {
+          grid-column: 2 / span 5;
+        }
+
+        .service-title-block {
+          margin-bottom: 93.75px;
+        }
+
+        .service-title {
+          font-size: 33.75px;
         }
       }
 
-      .build-card {
-        position: sticky;
-        top: calc(var(--card-stack-top) + (var(--index) * 10px));
-        z-index: calc(2 + var(--index));
-        width: 100%;
-        height: var(--card-fit);
-        margin-bottom: 40svh;
-        border-radius: var(--radius);
-        overflow: hidden;
-        color: var(--color-ink);
-        will-change: transform;
+      @media (min-width: 1280px) {
+        .service-content-inner {
+          grid-column: 2 / span 4;
+        }
       }
 
-      .build-card:last-child {
-        margin-bottom: 0;
-      }
+      @media (prefers-reduced-motion: reduce) {
+        .services-list {
+          height: auto;
+          min-height: 0;
+          overflow: visible;
+        }
 
-      .build-card-inner {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 1.5rem;
-        height: 100%;
-        min-height: 0;
-        padding: var(--card-pad-y) var(--card-pad-x);
-        box-sizing: border-box;
-        border-radius: var(--radius);
-        transform-origin: 50% 0%;
-        will-change: transform;
-      }
-
-      .build-card--sand,
-      .build-card--sand .build-card-inner {
-        --card-fill: var(--color-sand);
-        background: var(--color-sand);
-        color: var(--color-ink);
-      }
-
-      .build-card--dark,
-      .build-card--dark .build-card-inner {
-        --card-fill: var(--color-steel);
-        background: var(--color-steel);
-        color: var(--color-paper);
-      }
-
-      .build-card--light,
-      .build-card--light .build-card-inner {
-        --card-fill: var(--color-navy);
-        background: var(--color-navy);
-        color: var(--color-paper);
-      }
-
-      .build-card-head {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 1rem;
-      }
-
-      .build-card-title {
-        margin: 0;
-        max-width: 20ch;
-        font-size: var(--card-title-size);
-        font-weight: 500;
-        line-height: var(--card-title-lh);
-        letter-spacing: -0.03em;
-      }
-
-      .build-card-num {
-        font-size: clamp(2.4rem, 4.6vw, 3.5rem);
-        font-weight: 300;
-        line-height: 0.85;
-        letter-spacing: -0.04em;
-        text-transform: uppercase;
-        flex-shrink: 0;
-        opacity: 0.12;
-      }
-
-      .build-card-foot {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        gap: 1.15rem;
-      }
-
-      .build-card-text {
-        margin: 0;
-        max-width: 42ch;
-        font-size: 18px;
-        line-height: 1.55;
-        opacity: 0.88;
-      }
-
-      .build-card-tags {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.35rem;
-      }
-
-      .build-tag {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.4rem 0.85rem;
-        border-radius: 999px;
-        background: color-mix(in srgb, var(--card-fill) 38%, currentColor 16%);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        font-family: "Zalando Sans Expanded", sans-serif;
-        font-size: 0.7rem;
-        font-weight: 500;
-        letter-spacing: 0.08em;
-        line-height: 1.2;
-        white-space: nowrap;
-        color: inherit;
+        .service-item {
+          position: relative;
+          inset: auto;
+          height: auto;
+          min-height: 0;
+          transform: none !important;
+          will-change: auto;
+        }
       }
 
       .reveal {
@@ -1058,6 +1097,260 @@
       .reveal.is-visible {
         opacity: 1;
         transform: translateY(0);
+      }
+
+
+      .process-section {
+        --process-visual-h: clamp(112px, 16vh, 168px);
+        --process-gap: clamp(2.5rem, 5.5vh, 4rem);
+        --process-badge: 1.625rem;
+        position: relative;
+        z-index: 3;
+        background: var(--color-navy);
+        color: var(--color-paper);
+      }
+
+      .process-section h2,
+      .process-section h3 {
+        margin: 0;
+      }
+
+      .process-pin {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background: var(--color-navy);
+      }
+
+      .process-stage {
+        width: 100%;
+        max-width: min(1600px, 100%);
+        margin: 0 auto;
+        padding: 5.5rem 1.25rem 2.5rem;
+        box-sizing: border-box;
+      }
+
+      @media (min-width: 640px) {
+        .process-stage {
+          padding-left: 1.75rem;
+          padding-right: 1.75rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .process-stage {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+      }
+
+      .process-head {
+        margin: 0 0 clamp(3.5rem, 7vh, 5.5rem);
+      }
+
+      .process-lead {
+        width: max-content;
+        max-width: 100%;
+        margin: 1.15rem 0 0;
+        font-size: clamp(1.85rem, 4.8vw, 4.35rem);
+        font-weight: 500;
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+        color: var(--color-paper);
+      }
+
+      .process-lead.word-reveal .line {
+        overflow: visible;
+        padding-bottom: 0.16em;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 699px) {
+        .process-lead {
+          width: auto;
+        }
+
+        .process-lead.word-reveal .line {
+          white-space: normal;
+        }
+      }
+
+      .process-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: clamp(2.75rem, 6vw, 4.5rem);
+      }
+
+      .process-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--process-gap);
+        min-width: 0;
+      }
+
+      .process-visual {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: var(--process-visual-h);
+      }
+
+      .process-icon-svg {
+        display: block;
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+      }
+
+      .process-card .process-title {
+        margin: 0 0 1.25rem;
+        font-size: clamp(1.45rem, 2vw, 1.9rem);
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+        color: var(--color-paper);
+      }
+
+      .process-badge {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        padding: 0.4rem 0.85rem;
+        border-radius: 999px;
+        background-color: var(--color-navy);
+        background-image: linear-gradient(
+          rgba(214, 211, 206, 0.14),
+          rgba(214, 211, 206, 0.14)
+        );
+        backdrop-filter: blur(8px);
+        color: var(--color-mist);
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+
+      .process-copy {
+        max-width: 32ch;
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: rgba(214, 211, 206, 0.76);
+      }
+
+      .process-line {
+        position: absolute;
+        z-index: 1;
+        pointer-events: none;
+        background: var(--color-sand);
+      }
+
+      @media (min-width: 900px) {
+        .process-section {
+          --process-visual-h: clamp(168px, 20vh, 200px);
+        }
+
+        .process-pin {
+          height: 100svh;
+        }
+
+        .process-stage {
+          padding-top: 11.5rem;
+          padding-bottom: clamp(10rem, 18vh, 13rem);
+        }
+
+        .process-head {
+          margin-bottom: clamp(5rem, 9.6vh, 7rem);
+        }
+
+        .process-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          column-gap: clamp(1.5rem, 4vw, 5rem);
+          row-gap: 0;
+        }
+
+        .process-line {
+          top: calc(var(--process-visual-h) + var(--process-gap) + var(--process-badge) / 2);
+          left: calc(var(--process-badge) / 2);
+          right: 0;
+          height: 1px;
+          transform: scaleX(0) scaleY(0);
+          transform-origin: left center;
+        }
+
+        .process-visual {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+
+        .process-badge {
+          transform: scale(0);
+        }
+
+        [data-process-copy] {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+      }
+
+      @media (hover: hover) and (pointer: fine) and (min-width: 900px) {
+        .process-visual-inner {
+          transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .process-card:hover .process-visual-inner {
+          transform: scale(1.035);
+        }
+      }
+
+      @media (max-width: 899px) {
+        .process-section {
+          padding: var(--section-pad-y) 0 calc(var(--section-pad-y) + 2.5rem);
+        }
+
+        .process-pin {
+          height: auto;
+          display: block;
+        }
+
+        .process-stage {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+
+        .process-grid {
+          padding-left: 3.25rem;
+        }
+
+        .process-line {
+          top: 0.2rem;
+          bottom: 0.2rem;
+          left: 1rem;
+          width: 1px;
+        }
+
+        .process-badge {
+          position: absolute;
+          left: -3.25rem;
+          top: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .process-visual,
+        .process-badge,
+        [data-process-copy],
+        .process-line {
+          opacity: 1 !important;
+          transform: none !important;
+        }
       }
 
       .portfolio-section {
@@ -1423,6 +1716,87 @@
         grid-template-columns: 1fr 1fr;
         gap: 0.45rem 1rem;
       }
+
+      .cookie-banner {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 30px;
+        z-index: 60;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.15rem 1.35rem;
+        width: max-content;
+        max-width: calc(100% - 20px);
+        margin: 0 auto;
+        padding: 8px 16px;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        border-radius: 8px;
+        color: #ffffff;
+        box-sizing: border-box;
+        mix-blend-mode: difference;
+      }
+
+      .cookie-banner[hidden] {
+        display: none;
+      }
+
+      .cookie-banner-text {
+        margin: 0;
+        font-family: "Google Sans", sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.35;
+        letter-spacing: 0;
+        text-transform: none;
+        white-space: nowrap;
+        color: inherit;
+      }
+
+      .cookie-banner-actions {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        gap: 0.85rem;
+      }
+
+      .cookie-banner .btn {
+        --btn-shift: 1.45rem;
+        --btn-gap: 0.7rem;
+        --btn-char-stagger: 18ms;
+        padding: 0.2rem 0;
+        font-family: "Google Sans", sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        text-transform: none;
+        color: inherit;
+      }
+
+      .cookie-banner .btn-underline {
+        display: none;
+      }
+
+      .cookie-banner .btn-arrow {
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+
+      .cookie-banner .btn-arrow--left {
+        margin-top: -0.4rem;
+      }
+
+      @media (max-width: 639px) {
+        .cookie-banner {
+          flex-wrap: wrap;
+          padding: 8px 14px;
+        }
+
+        .cookie-banner-text {
+          white-space: normal;
+        }
+      }
     </style>
     <script>
       window.__spacersScrollLock = (function () {
@@ -1658,105 +2032,212 @@
         </div>
       </section>
 
-      <!-- Made to matter — stacked cards (Wonder Makers layout) -->
+      <!-- Services — two-column stacked panels (Trionn layout) -->
       <section
         id="builds"
         data-header-theme="light"
         class="platforms-section"
       >
-        <div class="content-max">
-          <div class="build-layout">
-            <div class="build-copy">
-              <div class="what-badge what-badge--ink font-display w-fit">
-                Made to matter
+        <div class="services-list" data-services-list>
+          <article class="service-item" data-service-item>
+            <div class="service-row">
+              <div class="service-visual">
+                <span class="service-caption">Shaped in Figma, ready<br>for real products.</span>
+                <img
+                  src="assets/service-screen.jpg"
+                  alt=""
+                  width="2048"
+                  height="1366"
+                  decoding="async"
+                />
               </div>
-              <h2
-                class="hero-title build-copy-heading font-display font-medium word-reveal"
-                data-build-title
-              >
-                Digital experiences built to go further.
-              </h2>
-              <p class="hero-sub max-w-2xl font-sans font-normal leading-snug">
-                We design and build digital experiences where thoughtful UI, clean technology and performance work as one. From the first interface to the final line of code, every detail has a purpose — creating websites and products that are clear, fast and ready for what’s next.
-              </p>
+              <div class="service-content">
+                <div class="service-content-inner">
+                  <div class="service-title-block">
+                    <h2 class="service-title font-display word-reveal" data-service-title>UI/UX Design</h2>
+                    <p class="service-desc font-sans">
+                      Strategic UI/UX and web design focused on clear user experiences, intuitive flows and scalable design systems — from early concepts to polished digital products.
+                    </p>
+                  </div>
+                  <div class="service-info">
+                    <span class="service-info-label">Designing Better Experiences</span>
+                    <ul class="service-info-list">
+                      <li>Figma design workflows</li>
+                      <li>Component-based UI &amp; Design systems</li>
+                      <li>Responsive web design</li>
+                      <li>Wireframing &amp; prototyping</li>
+                      <li>Interactive prototypes</li>
+                      <li>Accessibility-ready design</li>
+                      <li>Developer-ready design</li>
+                      <li>UX strategy &amp; user flows</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
+          </article>
 
-            <div class="build-cards" data-build-cards>
-              <article
-                class="build-card build-card-slot build-card--sand"
-                style="--index: 0"
-                data-build-card
-              >
-                <div class="build-card-inner" data-build-card-scale>
-                  <div class="build-card-head">
-                    <h3 class="build-card-title font-display word-reveal">UI/UX Design</h3>
-                    <span class="build-card-num font-display">01</span>
-                  </div>
-                  <div class="build-card-foot">
-                    <p class="build-card-text font-sans">
-                      Strategic UI/UX and web design focused on clear user experiences, intuitive flows and scalable design systems.
+          <article class="service-item" data-service-item>
+            <div class="service-row">
+              <div class="service-visual service-visual--navy">
+                <span class="service-caption">Built with Astro for speed,<br>clarity and scale.</span>
+                <img
+                  src="assets/service-screen.jpg"
+                  alt=""
+                  width="2048"
+                  height="1366"
+                  decoding="async"
+                />
+              </div>
+              <div class="service-content">
+                <div class="service-content-inner">
+                  <div class="service-title-block">
+                    <h2 class="service-title font-display word-reveal" data-service-title>Astro</h2>
+                    <p class="service-desc font-sans">
+                      High-performance websites built with Astro, headless CMS and modern web technologies — fast by default, flexible in structure and ready to grow.
                     </p>
-                    <div class="build-card-tags">
-                      <span class="build-tag">UI/UX Design</span>
-                      <span class="build-tag">Web Design</span>
-                      <span class="build-tag">User Flows</span>
-                      <span class="build-tag">Design Systems</span>
-                    </div>
                   </div>
+                  <div class="service-info">
+                    <span class="service-info-label">Designed to Perform</span>
+                    <ul class="service-info-list">
+                      <li>Astro websites</li>
+                      <li>Headless CMS</li>
+                      <li>Component-based development</li>
+                      <li>Static &amp; hybrid rendering</li>
+                      <li>Content-driven architecture</li>
+                      <li>CMS integrations</li>
+                      <li>API integrations</li>
+                      <li>Performance-first delivery</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-item" data-service-item>
+            <div class="service-row">
+              <div class="service-visual service-visual--sand">
+                <span class="service-caption">Faster pages, lighter assets,<br>smoother experiences.</span>
+                <img
+                  src="assets/service-screen.jpg"
+                  alt=""
+                  width="2048"
+                  height="1366"
+                  decoding="async"
+                />
+              </div>
+              <div class="service-content">
+                <div class="service-content-inner">
+                  <div class="service-title-block">
+                    <h2 class="service-title font-display word-reveal" data-service-title>Optimalizations</h2>
+                    <p class="service-desc font-sans">
+                      We remove the friction between your website and its full potential — improving speed, Core Web Vitals and technical performance across every layer.
+                    </p>
+                  </div>
+                  <div class="service-info">
+                    <span class="service-info-label">Making Every Interaction Count</span>
+                    <ul class="service-info-list">
+                      <li>Core Web Vitals</li>
+                      <li>Page speed optimization</li>
+                      <li>Performance audits</li>
+                      <li>Technical SEO</li>
+                      <li>Image &amp; asset optimization</li>
+                      <li>JavaScript optimization</li>
+                      <li>Mobile performance</li>
+                      <li>Loading &amp; rendering optimization</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+
+      <section
+        id="process"
+        class="process-section"
+        data-header-theme="dark"
+        data-process
+        aria-labelledby="process-heading"
+      >
+        <div class="process-pin" data-process-pin>
+          <div class="process-stage">
+            <header class="process-head">
+              <h2 class="what-badge font-display" id="process-heading">
+                How do we work?
+              </h2>
+              <p class="process-lead font-display word-reveal" data-process-lead>
+                Three passes. Each one makes the next one simpler.
+              </p>
+            </header>
+
+            <div class="process-grid" data-process-grid>
+              <article class="process-card" data-process-card>
+                <div class="process-visual" data-process-visual>
+                  <img
+                    class="process-visual-inner process-icon-svg"
+                    src="assets/process-brief.svg"
+                    alt=""
+                    width="284"
+                    height="295"
+                  />
+                </div>
+                <span class="process-badge font-display" data-process-badge>01</span>
+                <div data-process-copy>
+                  <h3 class="process-title font-display">Brief</h3>
+                  <p class="process-copy">
+                    Content, constraints and the parts that should stay quiet. The shape of the work comes before the screens.
+                  </p>
                 </div>
               </article>
 
-              <article
-                class="build-card build-card-slot build-card--dark"
-                style="--index: 1"
-                data-build-card
-              >
-                <div class="build-card-inner" data-build-card-scale>
-                  <div class="build-card-head">
-                    <h3 class="build-card-title font-display word-reveal">Astro</h3>
-                    <span class="build-card-num font-display">02</span>
-                  </div>
-                  <div class="build-card-foot">
-                    <p class="build-card-text font-sans">
-                      High-performance websites built with Astro, headless CMS and modern web technologies — fast, flexible and built to scale.
-                    </p>
-                    <div class="build-card-tags">
-                      <span class="build-tag">Astro</span>
-                      <span class="build-tag">Headless CMS</span>
-                      <span class="build-tag">Web Development</span>
-                      <span class="build-tag">Performance</span>
-                    </div>
-                  </div>
+              <article class="process-card" data-process-card>
+                <div class="process-visual" data-process-visual>
+                  <img
+                    class="process-visual-inner process-icon-svg"
+                    src="assets/process-system.svg"
+                    alt=""
+                    width="284"
+                    height="284"
+                  />
+                </div>
+                <span class="process-badge font-display" data-process-badge>02</span>
+                <div data-process-copy>
+                  <h3 class="process-title font-display">System</h3>
+                  <p class="process-copy">
+                    Flows, components and a prototype development can actually build. One set of parts, used on purpose.
+                  </p>
                 </div>
               </article>
 
-              <article
-                class="build-card build-card-slot build-card--light"
-                style="--index: 2"
-                data-build-card
-              >
-                <div class="build-card-inner" data-build-card-scale>
-                  <div class="build-card-head">
-                    <h3 class="build-card-title font-display word-reveal">Optimizations</h3>
-                    <span class="build-card-num font-display">03</span>
-                  </div>
-                  <div class="build-card-foot">
-                    <p class="build-card-text font-sans">
-                      Performance-focused optimization that makes websites faster, lighter and more efficient — from code and assets to Core Web Vitals.
-                    </p>
-                    <div class="build-card-tags">
-                      <span class="build-tag">Performance</span>
-                      <span class="build-tag">Core Web Vitals</span>
-                      <span class="build-tag">Speed Optimization</span>
-                      <span class="build-tag">Technical SEO</span>
-                    </div>
-                  </div>
+              <article class="process-card" data-process-card>
+                <div class="process-visual" data-process-visual>
+                  <img
+                    class="process-visual-inner process-icon-svg"
+                    src="assets/process-launch.svg"
+                    alt=""
+                    width="284"
+                    height="293"
+                  />
+                </div>
+                <span class="process-badge font-display" data-process-badge>03</span>
+                <div data-process-copy>
+                  <h3 class="process-title font-display">Launch</h3>
+                  <p class="process-copy">
+                    Ship it, then lighten whatever still feels heavy. Speed is part of the finish.
+                  </p>
                 </div>
               </article>
+
+              <div class="process-line" data-process-line aria-hidden="true"></div>
             </div>
           </div>
         </div>
       </section>
+
       <!-- Portfolio — list + floating preview (Dennis-style) -->
       <section
         id="portfolio"
@@ -1916,6 +2397,28 @@
       </div>
     </footer>
 
+    <aside
+      class="cookie-banner font-sans"
+      data-cookie-banner
+      role="dialog"
+      aria-label="Cookie consent"
+      hidden
+    >
+      <p class="cookie-banner-text">We use cookies to enhance your experience.</p>
+      <div class="cookie-banner-actions">
+        <button type="button" class="btn" data-cookie-choice="decline">
+          <span class="btn-arrow btn-arrow--left" aria-hidden="true"><span class="btn-arrow-icon"></span></span>
+          <span class="btn-word" data-btn-label>Decline</span>
+          <span class="btn-arrow btn-arrow--right" aria-hidden="true"><span class="btn-arrow-icon"></span></span>
+        </button>
+        <button type="button" class="btn" data-cookie-choice="accept">
+          <span class="btn-arrow btn-arrow--left" aria-hidden="true"><span class="btn-arrow-icon"></span></span>
+          <span class="btn-word" data-btn-label>Accept</span>
+          <span class="btn-arrow btn-arrow--right" aria-hidden="true"><span class="btn-arrow-icon"></span></span>
+        </button>
+      </div>
+    </aside>
+
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
     <script>
@@ -1941,6 +2444,19 @@
       }
 
       document.querySelectorAll("[data-btn-label]").forEach(splitButtonLabel);
+
+      const cookieBanner = document.querySelector("[data-cookie-banner]");
+      const COOKIE_KEY = "spacers-cookie-consent";
+
+      if (cookieBanner && !localStorage.getItem(COOKIE_KEY)) {
+        cookieBanner.hidden = false;
+        cookieBanner.querySelectorAll("[data-cookie-choice]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            localStorage.setItem(COOKIE_KEY, btn.getAttribute("data-cookie-choice"));
+            cookieBanner.hidden = true;
+          });
+        });
+      }
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -2153,7 +2669,6 @@
       resetHeroTitleReveal();
 
       const portfolioTitleEls = gsap.utils.toArray("[data-portfolio-title]");
-      const buildTitleEl = document.querySelector("[data-build-title]");
 
       function bindPortfolioTitleReveal(titleEl, options = {}) {
         const chars = options.lines
@@ -2471,6 +2986,7 @@
         pin: whatSticky,
         scrub: 0.35,
         anticipatePin: 0,
+        refreshPriority: 1,
         invalidateOnRefresh: true,
         onLeave: () => {
           playHeroScaleOut();
@@ -2639,6 +3155,201 @@
         );
       }
 
+      function initServiceStack() {
+        const list = document.querySelector("[data-services-list]");
+        const items = gsap.utils.toArray("[data-service-item]");
+        if (!list || items.length < 2) return;
+
+        const titleReveals = items.map((item) => {
+          const titleEl = item.querySelector("[data-service-title]");
+          if (!titleEl) return null;
+          const chars = splitPlainToChars(titleEl);
+          if (!chars.length) return null;
+          const revealTl = blurRevealTimeline(chars);
+          setBlurHidden(chars);
+          return {
+            show() {
+              setBlurHidden(chars);
+              revealTl.restart();
+            },
+            hide() {
+              revealTl.pause(0);
+              setBlurHidden(chars);
+            },
+            finish() {
+              revealTl.pause();
+              setBlurVisible(chars);
+            },
+          };
+        });
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          titleReveals.forEach((reveal) => reveal?.finish());
+          return;
+        }
+
+        const mm = gsap.matchMedia();
+        mm.add("(min-width: 768px)", () => {
+          gsap.set(items, {
+            yPercent: (i) => (i === 0 ? 0 : 100),
+            force3D: true,
+          });
+
+          let activeTitle = -1;
+          function setTitle(index) {
+            if (index === activeTitle) return;
+            activeTitle = index;
+            titleReveals[index]?.show();
+          }
+
+          const approachST = ScrollTrigger.create({
+            trigger: list,
+            start: "top 82%",
+            end: "top top",
+            onEnter: () => setTitle(0),
+            onEnterBack: () => setTitle(0),
+            onLeaveBack: () => {
+              activeTitle = -1;
+              titleReveals[0]?.hide();
+            },
+          });
+
+          const tl = gsap.timeline({
+            defaults: { ease: "none" },
+            scrollTrigger: {
+              trigger: list,
+              start: "top top",
+              end: () =>
+                `+=${Math.round(window.innerHeight * (items.length - 1))}`,
+              pin: true,
+              scrub: 0.45,
+              anticipatePin: 1,
+              refreshPriority: 1,
+              invalidateOnRefresh: true,
+              onEnter: () => setTitle(0),
+              onEnterBack: () => setTitle(items.length - 1),
+              onLeave: () => titleReveals.forEach((reveal) => reveal?.finish()),
+              onLeaveBack: () => {
+                activeTitle = -1;
+                titleReveals.forEach((reveal) => reveal?.hide());
+              },
+              onUpdate: (self) => {
+                const n = items.length;
+                const index = Math.min(
+                  n - 1,
+                  Math.floor(self.progress * (n - 1) + 0.28)
+                );
+                setTitle(index);
+              },
+            },
+          });
+
+          items.forEach((item, i) => {
+            if (i === 0) return;
+            tl.to(item, { yPercent: 0, duration: 1 }, i - 1);
+          });
+
+          requestAnimationFrame(() => {
+            const pinST = tl.scrollTrigger;
+            const rect = list.getBoundingClientRect();
+            if (pinST?.isActive || approachST.isActive || (rect.top < window.innerHeight * 0.82 && rect.bottom > 0)) {
+              setTitle(0);
+            }
+          });
+
+          return () => {
+            approachST.kill();
+            if (tl.scrollTrigger) tl.scrollTrigger.kill();
+            tl.kill();
+            gsap.set(items, { clearProps: "transform" });
+          };
+        });
+
+        mm.add("(max-width: 767px)", () => {
+          const triggers = items.map((item, i) => {
+            const reveal = titleReveals[i];
+            if (!reveal) return null;
+            return ScrollTrigger.create({
+              trigger: item,
+              start: "top 82%",
+              end: "bottom top",
+              onEnter: () => reveal.show(),
+              onEnterBack: () => reveal.show(),
+              onLeave: () => reveal.finish(),
+              onLeaveBack: () => reveal.hide(),
+            });
+          });
+          return () => triggers.forEach((st) => st?.kill());
+        });
+      }
+
+      initServiceStack();
+
+
+      function initProcess() {
+        const section = document.querySelector("[data-process]");
+        const pin = document.querySelector("[data-process-pin]");
+        const line = document.querySelector("[data-process-line]");
+        if (!section || !pin || !line) return;
+
+        const cards = gsap.utils.toArray("[data-process-card]", section);
+        const visuals = cards.map((card) => card.querySelector("[data-process-visual]"));
+        const badges = cards.map((card) => card.querySelector("[data-process-badge]"));
+        const copies = cards.map((card) => card.querySelector("[data-process-copy]"));
+        if (!cards.length || visuals.some((el) => !el) || badges.some((el) => !el)) return;
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        const mm = gsap.matchMedia();
+        mm.add("(min-width: 900px)", () => {
+          const n = cards.length;
+          gsap.set(visuals, { y: -50, autoAlpha: 0 });
+          gsap.set(badges, { scale: 0, transformOrigin: "50% 50%" });
+          gsap.set(copies, { y: 50, autoAlpha: 0 });
+          gsap.set(line, { scaleX: 0, scaleY: 0, transformOrigin: "left center" });
+
+          const tl = gsap.timeline({
+            defaults: { ease: "none" },
+            scrollTrigger: {
+              trigger: pin,
+              start: "top top",
+              end: "+=240%",
+              pin: true,
+              scrub: 0.45,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+            },
+          });
+
+          cards.forEach((_, i) => {
+            tl.to(visuals[i], { y: 0, autoAlpha: 1, duration: 1 }, i);
+            tl.to(badges[i], { scale: 1, duration: 1 }, i);
+            tl.to(copies[i], { y: 0, autoAlpha: 1, duration: 1 }, i);
+          });
+          tl.to(line, { scaleX: 1, duration: n }, 0);
+          tl.to(line, { scaleY: 1, duration: 1 }, 0);
+
+          return () => {
+            if (tl.scrollTrigger) tl.scrollTrigger.kill();
+            tl.kill();
+            gsap.set([...visuals, ...badges, ...copies, line], {
+              clearProps: "all",
+            });
+          };
+        });
+      }
+
+      initProcess();
+
+      const processLead = document.querySelector("[data-process-lead]");
+      if (processLead) {
+        bindPortfolioTitleReveal(processLead, {
+          lines: ["Three passes. Each one", "makes the next one simpler."],
+        });
+      }
+
+      portfolioTitleEls.forEach(bindPortfolioTitleReveal);
+
       /* —— Footer: sticky reveal + GSAP entrance —— */
       const siteFooter = document.querySelector("[data-site-footer]");
       const footerSpace = document.querySelector("[data-footer-space]");
@@ -2682,6 +3393,7 @@
             start: "top bottom",
             end: "top 28%",
             scrub: true,
+            refreshPriority: -1,
           },
         });
 
@@ -2779,6 +3491,7 @@
           trigger: footerSpace,
           start: "top 72%",
           end: "bottom top",
+          refreshPriority: -1,
           onEnter: playFooterIntro,
           onEnterBack: playFooterIntro,
           onLeave: resetFooterIntro,
@@ -2789,19 +3502,6 @@
           if (footerIntroST.isActive) playFooterIntro();
         });
       }
-
-      portfolioTitleEls.forEach(bindPortfolioTitleReveal);
-      if (buildTitleEl) {
-        bindPortfolioTitleReveal(buildTitleEl, {
-          lines: ["Digital experiences", "built to go further."],
-        });
-      }
-      document.querySelectorAll(".build-card-title").forEach((el) => {
-        bindPortfolioTitleReveal(el, {
-          trigger: el.closest(".build-card-slot") || el,
-          start: "top 82%",
-        });
-      });
 
       function dismissPreloader() {
         const preload = document.querySelector("[data-preload]");
