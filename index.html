@@ -335,18 +335,9 @@
         position: absolute;
         left: 0;
         right: 0;
-        top: -14%;
+        top: 0;
         height: 128%;
         will-change: transform;
-      }
-
-      .hero-parallax img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -365,10 +356,10 @@
         pointer-events: none;
         background: linear-gradient(
           to top,
-          rgba(6, 14, 27, 0.78) 0%,
-          rgba(6, 14, 27, 0.46) 38%,
-          rgba(6, 14, 27, 0.16) 68%,
-          rgba(6, 14, 27, 0) 100%
+          rgba(6, 14, 27, 0.9) 0%,
+          rgba(6, 14, 27, 0.74) 30%,
+          rgba(6, 14, 27, 0.52) 62%,
+          rgba(6, 14, 27, 0.34) 100%
         );
       }
 
@@ -1961,21 +1952,17 @@
         <div class="hero-sticky" aria-hidden="true">
           <div class="hero-visual" data-hero-visual data-hero-scale>
             <div class="hero-parallax" data-hero-parallax>
-              <picture>
-                <source
-                  type="image/webp"
-                  srcset="assets/hero-1920.webp?v=4 1920w, assets/hero.webp?v=4 4096w"
-                  sizes="100vw"
-                />
-                <img
-                  src="assets/hero.jpg?v=4"
-                  alt=""
-                  width="4096"
-                  height="2544"
-                  decoding="async"
-                  fetchpriority="high"
-                />
-              </picture>
+              <video
+                class="hero-video"
+                data-hero-video
+                muted
+                loop
+                playsinline
+                preload="auto"
+                poster="assets/hero-poster.webp?v=2"
+                width="1920"
+                height="1194"
+              ></video>
             </div>
             <div class="hero-overlay"></div>
           </div>
@@ -2384,7 +2371,7 @@
                 <span class="footer-meta-label">Business enquiry</span>
                 <ul class="footer-meta-list">
                   <li>
-                    <a href="mailto:hello@spacers.agency">E. hello@spacers.agency</a>
+                    <a href="mailto:hello@spacers.agency">hello@spacers.agency</a>
                   </li>
                 </ul>
               </div>
@@ -2395,13 +2382,7 @@
                     <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">Linkedin</a>
                   </li>
                   <li>
-                    <a href="https://dribbble.com/" target="_blank" rel="noopener noreferrer">Dribbble</a>
-                  </li>
-                  <li>
                     <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                  </li>
-                  <li>
-                    <a href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">Behance</a>
                   </li>
                 </ul>
               </div>
@@ -2800,9 +2781,9 @@
       if (heroShell && heroParallax && !reduceMotion) {
         gsap.fromTo(
           heroParallax,
-          { yPercent: -9 },
+          { yPercent: 0 },
           {
-            yPercent: 9,
+            yPercent: -16,
             ease: "none",
             force3D: true,
             scrollTrigger: {
@@ -2813,6 +2794,39 @@
             },
           }
         );
+      }
+
+      const heroVideo = document.querySelector("[data-hero-video]");
+      if (heroVideo) {
+        if (reduceMotion) {
+          heroVideo.removeAttribute("autoplay");
+          heroVideo.preload = "none";
+          heroVideo.pause();
+        } else {
+          const narrow = window.matchMedia("(max-width: 767px)").matches;
+          heroVideo.src = narrow ? "assets/hero-mobile.mp4?v=2" : "assets/hero.mp4?v=2";
+          const playHeroVideo = () => {
+            heroVideo.play().catch(() => {});
+          };
+          if (heroVideo.readyState >= 2) playHeroVideo();
+          else heroVideo.addEventListener("canplay", playHeroVideo, { once: true });
+          document.addEventListener("visibilitychange", () => {
+            if (document.hidden) heroVideo.pause();
+            else playHeroVideo();
+          });
+          if (heroShell) {
+            const heroVideoObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) playHeroVideo();
+                  else heroVideo.pause();
+                });
+              },
+              { threshold: 0.05 }
+            );
+            heroVideoObserver.observe(heroShell);
+          }
+        }
       }
 
       if (heroIntro && heroTitleTl) {
@@ -3018,9 +3032,9 @@
           ease: "none",
           scrollTrigger: {
             trigger: whatTrack,
-            start: "top 82%",
+            start: "top bottom",
             end: "top top",
-            scrub: 1.15,
+            scrub: 0.6,
           },
         });
       }
