@@ -2,39 +2,46 @@
 
 Marketing site for Spacers — UI/UX, Astro, and performance-focused digital products.
 
-Static HTML. No build step, no backend, no environment secrets.
+Built with [Astro](https://astro.build) 7.x, Tailwind CSS 4, and GSAP.
 
-## Preview locally
+## Requirements
 
-Serve the project folder over HTTP (opening `index.html` as a file can break fonts and assets).
+- Node.js 22.12 or newer
 
-**Laragon:** [http://localhost/spacers/](http://localhost/spacers/)
-
-**Node:**
+## Development
 
 ```bash
-npx serve .
+npm install
+npm run dev
 ```
 
-**Python:**
+Open [http://localhost:4321](http://localhost:4321).
+
+## Build & preview
 
 ```bash
-python -m http.server 8080
+npm run build
+npm run preview
 ```
 
-Then open `http://localhost:8080`.
+Static output is written to `dist/`.
 
-## Stack
+## Project layout
 
-- HTML / CSS
-- [Tailwind CSS](https://tailwindcss.com) via CDN
-- [GSAP](https://gsap.com) 3.12 + ScrollTrigger
+| Path | Purpose |
+|------|---------|
+| `src/pages/` | Routes (`/`, `/brief`) — compose components only |
+| `src/layouts/` | Page shells, meta, fonts |
+| `src/components/home/` | Home sections (hero, services, process, portfolio, footer) |
+| `src/components/brief/` | Brief intro, form sections, success state |
+| `src/components/shared/` | Shared UI (preloader) |
+| `src/styles/` | Tailwind entry + page CSS |
+| `src/scripts/` | Client JS (GSAP, forms, preloader) |
+| `public/assets/` | Images, video, favicons |
 
 ## Deploy
 
-Any static host works: GitHub Pages, Netlify, Cloudflare Pages, or a classic web root.
-
-For GitHub Pages: repository **Settings → Pages → Deploy from a branch**, branch `main`, folder `/` (root).
+Deploy the `dist/` folder to any static host (Netlify, Cloudflare Pages, Vercel static, GitHub Pages with an Astro adapter, or a classic web root).
 
 ## License
 

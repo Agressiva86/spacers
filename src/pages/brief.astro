@@ -1,0 +1,49 @@
+---
+import BriefLayout from "../layouts/BriefLayout.astro";
+import Preloader from "../components/shared/Preloader.astro";
+import BriefIntro from "../components/brief/BriefIntro.astro";
+import BriefBasicsSection from "../components/brief/sections/BriefBasicsSection.astro";
+import BriefProjectSection from "../components/brief/sections/BriefProjectSection.astro";
+import BriefMarketSection from "../components/brief/sections/BriefMarketSection.astro";
+import BriefBudgetSection from "../components/brief/sections/BriefBudgetSection.astro";
+import BriefFormActions from "../components/brief/BriefFormActions.astro";
+import BriefSuccess from "../components/brief/BriefSuccess.astro";
+---
+
+<BriefLayout
+  title="Project brief — Spacers Agency"
+  description="Tell Spacers what you need. A short project brief so the first conversation can be about the work."
+>
+  <Preloader />
+
+  <main class="brief-main">
+    <div class="brief-split">
+      <BriefIntro />
+
+      <div class="brief-panel">
+        <div class="brief-panel-inner">
+          <form class="brief-form" id="brief-form" novalidate>
+            <div class="hp" aria-hidden="true">
+              <label
+                >Leave this empty<input
+                  type="text"
+                  name="company_website"
+                  tabindex="-1"
+                  autocomplete="off"
+                /></label
+              >
+            </div>
+
+            <BriefBasicsSection />
+            <BriefProjectSection />
+            <BriefMarketSection />
+            <BriefBudgetSection />
+            <BriefFormActions />
+          </form>
+
+          <BriefSuccess />
+        </div>
+      </div>
+    </div>
+  </main>
+</BriefLayout>
