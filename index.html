@@ -1915,7 +1915,7 @@
       <div class="content-max">
         <span class="site-logo-slot" aria-hidden="true"></span>
         <nav class="nav-pill font-display" aria-label="Primary">
-          <a href="#designs" class="btn btn--menu">
+          <a href="#service-uiux" class="btn btn--menu" data-nav-scroll="service-uiux">
             <span class="btn-underline" aria-hidden="true">
               <span class="btn-ul btn-ul--out"></span>
               <span class="btn-ul btn-ul--in"></span>
@@ -1924,7 +1924,7 @@
             <span class="btn-word" data-btn-label>UI/UX Designs</span>
             <span class="btn-arrow btn-arrow--right" aria-hidden="true"><span class="btn-arrow-icon"></span></span>
           </a>
-          <a href="#builds" class="btn btn--menu">
+          <a href="#service-astro" class="btn btn--menu" data-nav-scroll="service-astro">
             <span class="btn-underline" aria-hidden="true">
               <span class="btn-ul btn-ul--out"></span>
               <span class="btn-ul btn-ul--in"></span>
@@ -1933,7 +1933,7 @@
             <span class="btn-word" data-btn-label>Astro</span>
             <span class="btn-arrow btn-arrow--right" aria-hidden="true"><span class="btn-arrow-icon"></span></span>
           </a>
-          <a href="#contact" class="btn">
+          <a href="#contact" class="btn" data-nav-scroll="contact">
             <span class="btn-underline" aria-hidden="true">
               <span class="btn-ul btn-ul--out"></span>
               <span class="btn-ul btn-ul--in"></span>
@@ -2040,7 +2040,7 @@
         class="platforms-section"
       >
         <div class="services-list" data-services-list>
-          <article class="service-item" data-service-item>
+          <article class="service-item" id="service-uiux" data-service-item>
             <div class="service-row">
               <div class="service-visual">
                 <span class="service-caption">Shaped in Figma, ready<br>for real products.</span>
@@ -2078,7 +2078,7 @@
             </div>
           </article>
 
-          <article class="service-item" data-service-item>
+          <article class="service-item" id="service-astro" data-service-item>
             <div class="service-row">
               <div class="service-visual service-visual--navy">
                 <span class="service-caption">Built with Astro for speed,<br>clarity and scale.</span>
@@ -2355,13 +2355,13 @@
 
           <div class="footer-aside" data-footer-aside>
             <div class="footer-ctas" data-footer-cta>
-              <a href="mailto:hello@spacers.agency" class="btn font-display">
+              <a href="brief.html" class="btn font-display">
                 <span class="btn-underline" aria-hidden="true">
                   <span class="btn-ul btn-ul--out"></span>
                   <span class="btn-ul btn-ul--in"></span>
                 </span>
                 <span class="btn-arrow btn-arrow--left" aria-hidden="true"><span class="btn-arrow-icon"></span></span>
-                <span class="btn-word" data-btn-label>Discuss your project</span>
+                <span class="btn-word" data-btn-label>Tell us what you need</span>
                 <span class="btn-arrow btn-arrow--right" aria-hidden="true"><span class="btn-arrow-icon"></span></span>
               </a>
             </div>
@@ -3245,6 +3245,7 @@
           const tl = gsap.timeline({
             defaults: { ease: "none" },
             scrollTrigger: {
+              id: "services-stack",
               trigger: list,
               start: "top top",
               end: () =>
@@ -3313,6 +3314,88 @@
 
       initServiceStack();
 
+      let navScrollTween = null;
+
+      function navScrollTarget(key) {
+        if (key === "contact") {
+          const root = document.documentElement;
+          return Math.max(0, root.scrollHeight - window.innerHeight);
+        }
+
+        const index = key === "service-astro" ? 1 : 0;
+        const stack = ScrollTrigger.getById("services-stack");
+        const desktop = window.matchMedia("(min-width: 768px)").matches;
+        if (stack && desktop && stack.end > stack.start) {
+          const count = document.querySelectorAll("[data-service-item]").length;
+          const steps = Math.max(1, count - 1);
+          return stack.start + (stack.end - stack.start) * (index / steps);
+        }
+
+        const el = document.getElementById(key);
+        if (!el) return window.scrollY;
+        const header = document.querySelector("[data-site-header]");
+        const offset = header ? header.getBoundingClientRect().bottom + 12 : 0;
+        return el.getBoundingClientRect().top + window.scrollY - offset;
+      }
+
+      function animateScrollTo(targetY) {
+        const root = document.documentElement;
+        const max = Math.max(0, root.scrollHeight - window.innerHeight);
+        const target = gsap.utils.clamp(0, max, targetY);
+        const from = window.scrollY;
+        if (Math.abs(target - from) < 4) return;
+
+        if (navScrollTween) navScrollTween.kill();
+
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) {
+          root.style.scrollBehavior = "auto";
+          window.scrollTo(0, target);
+          root.style.scrollBehavior = "";
+          return;
+        }
+
+        const proxy = { y: from };
+        const distance = Math.abs(target - from);
+        root.style.scrollBehavior = "auto";
+
+        const stopForUser = () => {
+          navScrollTween?.kill();
+        };
+        window.addEventListener("wheel", stopForUser, { passive: true });
+        window.addEventListener("touchstart", stopForUser, { passive: true });
+        window.addEventListener("keydown", stopForUser);
+
+        const cleanup = () => {
+          window.removeEventListener("wheel", stopForUser);
+          window.removeEventListener("touchstart", stopForUser);
+          window.removeEventListener("keydown", stopForUser);
+          root.style.scrollBehavior = "";
+          navScrollTween = null;
+        };
+
+        navScrollTween = gsap.to(proxy, {
+          y: target,
+          duration: gsap.utils.clamp(0.72, 1.15, distance / 2200),
+          ease: "power2.inOut",
+          overwrite: true,
+          onUpdate: () => window.scrollTo(0, proxy.y),
+          onComplete: cleanup,
+          onInterrupt: cleanup,
+        });
+      }
+
+      document.querySelectorAll("[data-nav-scroll]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+          const key = link.getAttribute("data-nav-scroll");
+          if (!key) return;
+          event.preventDefault();
+          const hash = link.getAttribute("href");
+          if (hash && location.hash !== hash) history.pushState(null, "", hash);
+          animateScrollTo(navScrollTarget(key));
+        });
+      });
 
       function initProcess() {
         const section = document.querySelector("[data-process]");
@@ -3544,6 +3627,10 @@
           updateSlider();
           syncFooterHeight();
           ScrollTrigger.refresh();
+          const key = location.hash.replace("#", "");
+          if (key === "service-uiux" || key === "service-astro" || key === "contact") {
+            animateScrollTo(navScrollTarget(key));
+          }
         });
       }
 
