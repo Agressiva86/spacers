@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Zalando Sans Expanded", sans-serif;
+  --font-sans: "Google Sans", sans-serif;
+  --color-navy: #060e1b;
+  --color-ink: #111d2b;
+  --color-steel: #3a495d;
+  --color-sand: #d6d3ce;
+  --color-mist: #f6f5f4;
+  --color-paper: #f6f5f4;
+  --animate-fade-up: fade-up 1s ease-out both;
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

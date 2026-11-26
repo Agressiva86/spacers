@@ -1,0 +1,35 @@
+---
+---
+
+<section class="brief-card">
+              <header class="section-head">
+                <span class="section-index">04</span>
+                <div>
+                  <h2>Budget and timing</h2>
+                  <p>Net figures, so we can tell you honestly what fits.</p>
+                </div>
+              </header>
+              <div class="field" data-field="budget">
+                <label class="field-label" for="budget">Expected budget range <span class="req" aria-hidden="true">*</span></label>
+                <p class="field-hint">Not sure about the budget? That’s completely fine. Select the closest range or choose “Let’s discuss it”.</p>
+                <select class="control" id="budget" name="budget" required>
+                  <option value="">Select a range</option>
+                  <option>Under 5,000 PLN / under €1,200</option>
+                  <option>5,000 – 10,000 PLN / €1,200 – €2,400</option>
+                  <option>10,000 – 20,000 PLN / €2,400 – €4,800</option>
+                  <option>20,000 – 40,000 PLN / €4,800 – €9,500</option>
+                  <option>Over 40,000 PLN / over €9,500</option>
+                  <option>Let’s discuss it</option>
+                </select>
+                <p class="field-error" data-error="budget"></p>
+              </div>
+              <div class="field">
+                <label class="field-label" for="deadline">Expected deadline</label>
+                <p class="field-hint">Leave this empty if the date is still open.</p>
+                <input class="control" id="deadline" name="deadline" type="date" />
+              </div>
+              <div class="field">
+                <label class="field-label" for="notes">Anything else we should know</label>
+                <textarea class="control" id="notes" name="notes" maxlength="1000" placeholder="Constraints, stakeholders, tools you already use."></textarea>
+              </div>
+            </section>

@@ -1,0 +1,58 @@
+---
+---
+
+<section class="brief-card">
+              <header class="section-head">
+                <span class="section-index">02</span>
+                <div>
+                  <h2>The project</h2>
+                  <p>What should be made, and what it needs to achieve.</p>
+                </div>
+              </header>
+              <div class="field" data-field="needs">
+                <p class="field-label" id="needs-label">Which services do you need? <span class="req" aria-hidden="true">*</span></p>
+                <div class="option-list option-list--split" role="group" aria-labelledby="needs-label">
+                  <label class="option"><input type="checkbox" name="needs" value="UI/UX design" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>UI/UX design</span></label>
+                  <label class="option"><input type="checkbox" name="needs" value="Astro website build" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>Astro website build</span></label>
+                  <label class="option"><input type="checkbox" name="needs" value="Performance optimization" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>Performance optimization</span></label>
+                  <label class="option"><input type="checkbox" name="needs" value="Audit of the current site" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>Audit of the current site</span></label>
+                  <label class="option"><input type="checkbox" name="needs" value="Other" id="needs-other" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>Other</span></label>
+                </div>
+                <p class="field-error" data-error="needs"></p>
+              </div>
+              <div class="field other-field" id="other-field" data-field="other" hidden>
+                <label class="field-label" for="other">What else do you need?</label>
+                <input class="control" id="other" name="other" type="text" maxlength="200" />
+                <p class="field-error" data-error="other"></p>
+              </div>
+              <div class="field" data-field="goal">
+                <p class="field-label" id="goal-label">Main goal of the new site <span class="req" aria-hidden="true">*</span></p>
+                <div class="option-list" role="group" aria-labelledby="goal-label">
+                  <label class="option"><input type="checkbox" name="goal" value="More sales and conversion" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>More sales and conversion</span></label>
+                  <label class="option"><input type="checkbox" name="goal" value="A refreshed image" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>A refreshed image</span></label>
+                  <label class="option"><input type="checkbox" name="goal" value="Ultra-fast loading" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>Ultra-fast loading</span></label>
+                  <label class="option"><input type="checkbox" name="goal" value="A new brand on the market" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>A new brand on the market</span></label>
+                </div>
+                <p class="field-error" data-error="goal"></p>
+              </div>
+              <div class="field" data-field="pages">
+                <label class="field-label" for="pages">Which views should the site include? <span class="req" aria-hidden="true">*</span></label>
+                <p class="field-hint">List the pages, for example: Home, About, Services, Contact, Blog.</p>
+                <textarea class="control" id="pages" name="pages" required maxlength="800"></textarea>
+                <p class="field-error" data-error="pages"></p>
+              </div>
+              <div class="field">
+                <p class="field-label" id="materials-label">Which brand materials do you already have?</p>
+                <div class="option-list option-list--split" role="group" aria-labelledby="materials-label">
+                  <label class="option"><input type="checkbox" name="materials" value="Vector logo" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>Vector logo</span></label>
+                  <label class="option"><input type="checkbox" name="materials" value="Brand guidelines" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>Brand guidelines</span></label>
+                  <label class="option"><input type="checkbox" name="materials" value="Photos or video" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>Photos or video</span></label>
+                  <label class="option"><input type="checkbox" name="materials" value="I need everything from scratch" /><span class="option-mark option-mark--check" aria-hidden="true"></span><span>I need everything from scratch</span></label>
+                </div>
+              </div>
+              <div class="field">
+                <label class="field-label" for="problem">What is the biggest problem with your current site?</label>
+                <p class="field-hint">Skip this if you don’t have a site yet.</p>
+                <textarea class="control" id="problem" name="problem" maxlength="800"></textarea>
+              </div>
+            </section>

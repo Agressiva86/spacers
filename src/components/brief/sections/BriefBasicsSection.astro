@@ -1,0 +1,41 @@
+---
+---
+
+<section class="brief-card">
+              <header class="section-head">
+                <span class="section-index">01</span>
+                <div>
+                  <h2>The basics</h2>
+                  <p>Who to write back to, and where the current site lives.</p>
+                </div>
+              </header>
+              <div class="field" data-field="name">
+                <label class="field-label" for="name">Name or company <span class="req" aria-hidden="true">*</span></label>
+                <input class="control" id="name" name="name" type="text" autocomplete="name" required />
+                <p class="field-error" data-error="name"></p>
+              </div>
+              <div class="field" data-field="email">
+                <label class="field-label" for="email">Email address <span class="req" aria-hidden="true">*</span></label>
+                <input class="control" id="email" name="email" type="email" autocomplete="email" required />
+                <div class="consent-wrap" data-field="email_consent">
+                  <label class="consent" for="email-consent">
+                    <input
+                      type="checkbox"
+                      id="email-consent"
+                      name="email_consent"
+                      value="yes"
+                      required
+                    />
+                    <span class="consent-mark" aria-hidden="true"></span>
+                    <span class="consent-text">I consent to the processing of the email address I have provided by Agnieszka Palmowska solely for the purpose of contacting me and responding to my inquiry submitted through this Brief form. Providing my email address is voluntary but necessary to receive a response. My data will not be used for marketing purposes or shared with third parties.</span>
+                  </label>
+                  <p class="field-error" data-error="email_consent"></p>
+                </div>
+                <p class="field-error" data-error="email"></p>
+              </div>
+              <div class="field" data-field="website">
+                <label class="field-label" for="website">Current website, if you have one</label>
+                <input class="control" id="website" name="website" type="url" inputmode="url" placeholder="https://" />
+                <p class="field-error" data-error="website"></p>
+              </div>
+            </section>

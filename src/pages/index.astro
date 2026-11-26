@@ -1,0 +1,34 @@
+---
+import HomeLayout from "../layouts/HomeLayout.astro";
+import Preloader from "../components/shared/Preloader.astro";
+import SiteHeaderBlend from "../components/home/SiteHeaderBlend.astro";
+import SiteHeaderNav from "../components/home/SiteHeaderNav.astro";
+import HeroSection from "../components/home/HeroSection.astro";
+import ServicesSection from "../components/home/ServicesSection.astro";
+import ProcessSection from "../components/home/ProcessSection.astro";
+import PortfolioSection from "../components/home/PortfolioSection.astro";
+import FooterRevealSpace from "../components/home/FooterRevealSpace.astro";
+import SiteFooter from "../components/home/SiteFooter.astro";
+import CookieBanner from "../components/home/CookieBanner.astro";
+---
+
+<HomeLayout
+  title="UI/UX Design & Fast Astro Websites - Spacers Agency"
+  description="UI/UX design, Astro websites and performance optimization. Faster load times, better Google rankings, more inquiries. Let's talk."
+  keywords="UI/UX design, Astro website development, website performance optimization, Core Web Vitals optimization, freelance UI/UX designer, Astro developer, fast websites, website speed optimization, SEO-friendly web design, UX audit"
+>
+  <Preloader />
+  <SiteHeaderBlend />
+  <SiteHeaderNav />
+
+  <main id="top">
+    <HeroSection />
+    <ServicesSection />
+    <ProcessSection />
+    <PortfolioSection />
+  </main>
+
+  <FooterRevealSpace />
+  <SiteFooter />
+  <CookieBanner />
+</HomeLayout>

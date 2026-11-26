@@ -1,0 +1,259 @@
+{
+  "width": 1024,
+  "height": 636,
+  "source": "hero",
+  "layers": [
+    {
+      "id": "logo",
+      "file": "logo.png",
+      "x": 378,
+      "y": 137,
+      "w": 285,
+      "h": 295,
+      "group": "logo"
+    },
+    {
+      "id": "astronaut",
+      "file": "astronaut.png",
+      "x": 494,
+      "y": 437,
+      "w": 41,
+      "h": 25,
+      "group": "astronaut"
+    },
+    {
+      "id": "dust",
+      "file": "dust.png",
+      "x": 712,
+      "y": 242,
+      "w": 132,
+      "h": 69,
+      "group": "dust"
+    },
+    {
+      "id": "rock-01",
+      "file": "rocks/rock-01.png",
+      "x": 416,
+      "y": 132,
+      "w": 98,
+      "h": 100,
+      "group": "rock"
+    },
+    {
+      "id": "rock-02",
+      "file": "rocks/rock-02.png",
+      "x": 128,
+      "y": 187,
+      "w": 106,
+      "h": 88,
+      "group": "rock"
+    },
+    {
+      "id": "rock-03",
+      "file": "rocks/rock-03.png",
+      "x": 689,
+      "y": 329,
+      "w": 65,
+      "h": 123,
+      "group": "rock"
+    },
+    {
+      "id": "rock-04",
+      "file": "rocks/rock-04.png",
+      "x": 403,
+      "y": 283,
+      "w": 63,
+      "h": 67,
+      "group": "rock"
+    },
+    {
+      "id": "rock-05",
+      "file": "rocks/rock-05.png",
+      "x": 319,
+      "y": 124,
+      "w": 56,
+      "h": 88,
+      "group": "rock"
+    },
+    {
+      "id": "rock-06",
+      "file": "rocks/rock-06.png",
+      "x": 486,
+      "y": 266,
+      "w": 81,
+      "h": 87,
+      "group": "rock"
+    },
+    {
+      "id": "rock-07",
+      "file": "rocks/rock-07.png",
+      "x": 524,
+      "y": 144,
+      "w": 54,
+      "h": 51,
+      "group": "rock"
+    },
+    {
+      "id": "rock-08",
+      "file": "rocks/rock-08.png",
+      "x": 412,
+      "y": 387,
+      "w": 55,
+      "h": 54,
+      "group": "rock"
+    },
+    {
+      "id": "rock-09",
+      "file": "rocks/rock-09.png",
+      "x": 625,
+      "y": 244,
+      "w": 46,
+      "h": 46,
+      "group": "rock"
+    },
+    {
+      "id": "rock-10",
+      "file": "rocks/rock-10.png",
+      "x": 517,
+      "y": 410,
+      "w": 67,
+      "h": 47,
+      "group": "rock"
+    },
+    {
+      "id": "rock-11",
+      "file": "rocks/rock-11.png",
+      "x": 838,
+      "y": 349,
+      "w": 42,
+      "h": 47,
+      "group": "rock"
+    },
+    {
+      "id": "rock-12",
+      "file": "rocks/rock-12.png",
+      "x": 99,
+      "y": 258,
+      "w": 40,
+      "h": 36,
+      "group": "rock"
+    },
+    {
+      "id": "rock-13",
+      "file": "rocks/rock-13.png",
+      "x": 449,
+      "y": 350,
+      "w": 61,
+      "h": 39,
+      "group": "rock"
+    },
+    {
+      "id": "rock-14",
+      "file": "rocks/rock-14.png",
+      "x": 582,
+      "y": 291,
+      "w": 31,
+      "h": 44,
+      "group": "rock"
+    },
+    {
+      "id": "rock-15",
+      "file": "rocks/rock-15.png",
+      "x": 669,
+      "y": 286,
+      "w": 38,
+      "h": 35,
+      "group": "rock"
+    },
+    {
+      "id": "rock-16",
+      "file": "rocks/rock-16.png",
+      "x": 568,
+      "y": 327,
+      "w": 39,
+      "h": 42,
+      "group": "rock"
+    },
+    {
+      "id": "rock-17",
+      "file": "rocks/rock-17.png",
+      "x": 583,
+      "y": 147,
+      "w": 38,
+      "h": 36,
+      "group": "rock"
+    },
+    {
+      "id": "rock-18",
+      "file": "rocks/rock-18.png",
+      "x": 641,
+      "y": 335,
+      "w": 46,
+      "h": 26,
+      "group": "rock"
+    },
+    {
+      "id": "rock-19",
+      "file": "rocks/rock-19.png",
+      "x": 459,
+      "y": 241,
+      "w": 45,
+      "h": 28,
+      "group": "rock"
+    },
+    {
+      "id": "rock-20",
+      "file": "rocks/rock-20.png",
+      "x": 226,
+      "y": 258,
+      "w": 29,
+      "h": 38,
+      "group": "rock"
+    },
+    {
+      "id": "rock-21",
+      "file": "rocks/rock-21.png",
+      "x": 461,
+      "y": 411,
+      "w": 34,
+      "h": 25,
+      "group": "rock"
+    },
+    {
+      "id": "rock-22",
+      "file": "rocks/rock-22.png",
+      "x": 597,
+      "y": 414,
+      "w": 27,
+      "h": 40,
+      "group": "rock"
+    },
+    {
+      "id": "rock-23",
+      "file": "rocks/rock-23.png",
+      "x": 72,
+      "y": 332,
+      "w": 24,
+      "h": 29,
+      "group": "rock"
+    },
+    {
+      "id": "rock-24",
+      "file": "rocks/rock-24.png",
+      "x": 607,
+      "y": 171,
+      "w": 22,
+      "h": 27,
+      "group": "rock"
+    },
+    {
+      "id": "rock-25",
+      "file": "rocks/rock-25.png",
+      "x": 737,
+      "y": 267,
+      "w": 31,
+      "h": 19,
+      "group": "rock"
+    }
+  ]
+}
